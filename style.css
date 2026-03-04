@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e1e2f, #2a2a40);
+    display: flex;
+    justify-content: center;
+    padding: 40px 15px;
+    min-height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 550px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #222;
+}
+
+.task-input {
+    display: flex;
+    gap: 10px;
+}
+
+.task-input input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.task-input input:focus {
+    outline: none;
+    border-color: #6c63ff;
+}
+
+.task-input button {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: none;
+    background: #6c63ff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.task-input button:hover {
+    background: #5848d8;
+}
+
+ul {
+    list-style: none;
+    margin-top: 25px;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: #f7f7fb;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    cursor: grab;
+    transition: 0.2s;
+}
+
+li:hover {
+    transform: scale(1.02);
+}
+
+li.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.task-buttons button {
+    margin-left: 5px;
+    padding: 6px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.complete-btn {
+    background: #28a745;
+    color: white;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .task-input {
+        flex-direction: column;
+    }
+
+    .task-input button {
+        width: 100%;
+    }
+}
