@@ -1,29 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Productivity Dashboard</title>
+<title>Student Task Dashboard</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
-<h1>📚 Student Productivity Dashboard</h1>
-<p>Organize your study tasks efficiently</p>
+<h1>📚 Study Task Manager</h1>
+<p>Manage your productivity like a pro</p>
 </header>
 
-<div class="dashboard">
+<div class="container">
 
 <div class="task-input">
-<input type="text" id="taskInput" placeholder="Enter a new task...">
-<button onclick="addTask()">Add Task</button>
+
+<input id="taskInput" type="text" placeholder="Enter new task...">
+
+<select id="category">
+<option value="Study">Study</option>
+<option value="Assignment">Assignment</option>
+<option value="Exam">Exam</option>
+<option value="Personal">Personal</option>
+</select>
+
+<button onclick="addTask()">Add</button>
+
 </div>
 
 <div class="stats">
-<p>Total Tasks: <span id="totalTasks">0</span></p>
-<p>Completed: <span id="completedTasks">0</span></p>
+
+<div class="stat">
+<h3 id="totalTasks">0</h3>
+<p>Total Tasks</p>
+</div>
+
+<div class="stat">
+<h3 id="completedTasks">0</h3>
+<p>Completed</p>
+</div>
+
+</div>
+
+<div class="progress-bar">
+<div id="progress"></div>
 </div>
 
 <h2>Pending Tasks</h2>
@@ -35,7 +61,7 @@
 </div>
 
 <footer>
-<p>Student Task Dashboard</p>
+<p>Student Productivity Dashboard • Web Project</p>
 </footer>
 
 <script src="script.js"></script>
