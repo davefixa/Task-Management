@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Task Dashboard</title>
+<title>Student Productivity Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,9 +13,14 @@
 <body>
 
 <header>
-<h1>📚 Study Task Manager</h1>
-<p>Manage your productivity like a pro</p>
+
+<h1>📚 Student Productivity Dashboard</h1>
+<p>Organize your study tasks efficiently</p>
+
+<button class="mode-toggle" onclick="toggleMode()">🌙 Toggle Mode</button>
+
 </header>
+
 
 <div class="container">
 
@@ -30,9 +35,21 @@
 <option value="Personal">Personal</option>
 </select>
 
-<button onclick="addTask()">Add</button>
+<select id="priority">
+<option value="Low">Low Priority</option>
+<option value="Medium">Medium Priority</option>
+<option value="High">High Priority</option>
+</select>
+
+<input type="date" id="deadline">
+
+<button onclick="addTask()">Add Task</button>
 
 </div>
+
+
+<input id="searchTask" type="text" placeholder="🔍 Search tasks..." onkeyup="renderTasks()">
+
 
 <div class="stats">
 
@@ -48,21 +65,27 @@
 
 </div>
 
+
 <div class="progress-bar">
 <div id="progress"></div>
 </div>
 
+
 <h2>Pending Tasks</h2>
 <ul id="taskList"></ul>
+
 
 <h2>Completed Tasks</h2>
 <ul id="completedList"></ul>
 
+
 </div>
 
+
 <footer>
-<p>Student Productivity Dashboard • Web Project</p>
+<p>Student Task Dashboard • Web Development Project</p>
 </footer>
+
 
 <script src="script.js"></script>
 
