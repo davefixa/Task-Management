@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Task Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Productivity Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>📚 Student Task Dashboard</h1>
+<header>
+<h1>📚 Student Productivity Dashboard</h1>
+<p>Organize your study tasks efficiently</p>
+</header>
 
-        <div class="task-input">
-            <input type="text" id="taskInput" placeholder="Enter new task...">
-            <button id="addTaskBtn">Add Task</button>
-        </div>
+<div class="dashboard">
 
-        <ul id="taskList"></ul>
-    </div>
+<div class="task-input">
+<input type="text" id="taskInput" placeholder="Enter a new task...">
+<button onclick="addTask()">Add Task</button>
+</div>
 
-    <script src="js/script.js"></script>
+<div class="stats">
+<p>Total Tasks: <span id="totalTasks">0</span></p>
+<p>Completed: <span id="completedTasks">0</span></p>
+</div>
+
+<h2>Pending Tasks</h2>
+<ul id="taskList"></ul>
+
+<h2>Completed Tasks</h2>
+<ul id="completedList"></ul>
+
+</div>
+
+<footer>
+<p>Student Task Dashboard • Web Development Project</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>
