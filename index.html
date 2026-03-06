@@ -3,35 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Task App</title>
+<title>TaskFlow</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="startup-body">
 
-<nav class="topnav">
-<h1>TaskFlow</h1>
-<input id="searchTask" placeholder="Search tasks..." onkeyup="searchTask()">
-</nav>
+<div class="startup-container">
 
-<div class="container">
+<h1 class="startup-title">TaskFlow</h1>
 
-<div class="add-task">
-<input type="text" id="taskInput" placeholder="What needs to be done?">
-<select id="priority">
-<option value="none">Priority</option>
-<option value="high">High</option>
-<option value="medium">Medium</option>
-<option value="low">Low</option>
-</select>
-<input type="date" id="deadline">
-<button onclick="addTask()">Add</button>
-</div>
+<p class="startup-text">
+Stay organized. Manage your tasks. Improve productivity.
+</p>
 
-<ul id="taskList"></ul>
+<button class="startup-button" onclick="location.href='app.html'">
+Start Productivity
+</button>
 
 </div>
 
-<script src="script.js"></script>
 </body>
 </html>
