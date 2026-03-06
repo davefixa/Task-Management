@@ -1,137 +1,217 @@
-let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || []
 
-function saveTasks(){
-localStorage.setItem("tasks", JSON.stringify(tasks));
+function save(){
+localStorage.setItem("tasks",JSON.stringify(tasks))
 }
-
 
 function addTask(){
 
-let input=document.getElementById("taskInput");
-let category=document.getElementById("category").value;
-let priority=document.getElementById("priority").value;
-let deadline=document.getElementById("deadline").value;
+let text=document.getElementById("taskInput").value
+let category=document.getElementById("category").value
+let priority=document.getElementById("priority").value
+let deadline=document.getElementById("deadline").value
 
-let text=input.value.trim();
+if(text==="") return
 
-if(text==="") return;
-
-let task={
+tasks.push({
 id:Date.now(),
-text:text,
-category:category,
-priority:priority,
-deadline:deadline,
+text,
+category,
+priority,
+deadline,
 completed:false
-};
+})
 
-tasks.push(task);
-
-input.value="";
-
-saveTasks();
-renderTasks();
+save()
+renderTasks()
 
 }
-
-
-function deleteTask(id){
-
-tasks=tasks.filter(task=>task.id!==id);
-
-saveTasks();
-renderTasks();
-
-}
-
-
-function completeTask(id){
-
-tasks=tasks.map(task=>{
-
-if(task.id===id){
-task.completed=!task.completed;
-}
-
-return task;
-
-});
-
-saveTasks();
-renderTasks();
-
-}
-
 
 function renderTasks(){
 
-let taskList=document.getElementById("taskList");
-let completedList=document.getElementById("completedList");
+let list=document.getElementById("taskList")
 
-let search=document.getElementById("searchTask").value.toLowerCase();
+if(!list) return
 
-taskList.innerHTML="";
-completedList.innerHTML="";
-
-let completed=0;
+list.innerHTML=""
 
 tasks.forEach(task=>{
 
-if(!task.text.toLowerCase().includes(search)) return;
-
-let li=document.createElement("li");
+let li=document.createElement("li")
 
 li.innerHTML=`
+<span>${task.text}</span>
 
 <div>
-
-<b>${task.text}</b>
-
-<span class="category">${task.category}</span>
-
-<span class="priority ${task.priority.toLowerCase()}">
-${task.priority}
-</span>
-
-<br>
-<small>📅 ${task.deadline || "No deadline"}</small>
-
+<button onclick="completeTask(${task.id})">✔</button>
+<button onclick="deleteTask(${task.id})">✖</button>
 </div>
+`
 
-<div class="buttons">
+list.appendChild(li)
 
-<button class="complete" onclick="completeTask(${task.id})">✔</button>
+})
 
-<button class="delete" onclick="deleteTask(${task.id})">✖</button>
-
-</div>
-
-`;
-
-if(task.completed){
-completed++;
-completedList.appendChild(li);
-}else{
-taskList.appendChild(li);
-}
-
-});
-
-document.getElementById("totalTasks").innerText=tasks.length;
-document.getElementById("completedTasks").innerText=completed;
-
-let progress=tasks.length?(completed/tasks.length)*100:0;
-
-document.getElementById("progress").style.width=progress+"%";
+updateStats()
 
 }
 
+function completeTask(id){
 
-function toggleMode(){
+tasks=tasks.map(t=>t.id===id?{...t,completed:true}:t)
 
-document.body.classList.toggle("dark");
+save()
+renderTasks()
+
+confetti()
 
 }
 
+function deleteTask(id){
 
-renderTasks();
+tasks=tasks.filter(t=>t.id!==id)
+
+save()
+renderTasks()
+
+}
+
+function searchTask(){
+
+let input=document.getElementById("searchTask").value.toLowerCase()
+
+let list=document.getElementById("taskList")
+
+list.innerHTML=""
+
+tasks.filter(t=>t.text.toLowerCase().includes(input))
+.forEach(task=>{
+
+let li=document.createElement("li")
+
+li.innerHTML=task.text
+
+list.appendChild(li)
+
+})
+
+}
+
+function filterTasks(type){
+
+let list=document.getElementById("taskList")
+
+list.innerHTML=""
+
+let filtered=[]
+
+if(type==="all") filtered=tasks
+if(type==="completed") filtered=tasks.filter(t=>t.completed)
+if(type==="pending") filtered=tasks.filter(t=>!t.completed)
+
+filtered.forEach(task=>{
+
+let li=document.createElement("li")
+
+li.innerHTML=task.text
+
+list.appendChild(li)
+
+})
+
+}
+
+function updateStats(){
+
+let total=tasks.length
+let completed=tasks.filter(t=>t.completed).length
+let pending=total-completed
+
+let t=document.getElementById("totalTasks")
+let c=document.getElementById("completedTasks")
+let p=document.getElementById("pendingTasks")
+
+if(t){
+t.innerText=total
+c.innerText=completed
+p.innerText=pending
+}
+
+}
+
+function confetti(){
+
+for(let i=0;i<30;i++){
+
+let div=document.createElement("div")
+
+div.className="confetti"
+
+div.style.left=Math.random()*100+"%"
+
+document.body.appendChild(div)
+
+setTimeout(()=>div.remove(),2000)
+
+}
+
+}
+
+renderTasks()
+
+if(document.getElementById("taskChart")){
+
+let completed=tasks.filter(t=>t.completed).length
+let pending=tasks.length-completed
+
+new Chart(document.getElementById("taskChart"),{
+
+type:"doughnut",
+
+data:{
+labels:["Completed","Pending"],
+
+datasets:[{
+data:[completed,pending],
+backgroundColor:["#22c55e","#ef4444"]
+}]
+}
+
+})
+
+  }
+function toggleTheme(){
+
+document.body.classList.toggle("light-mode")
+
+}
+
+function clearTasks(){
+
+tasks=[]
+
+save()
+
+renderTasks()
+
+alert("All tasks deleted")
+
+}
+
+function saveUsername(){
+
+let name=document.getElementById("usernameInput").value
+
+localStorage.setItem("username",name)
+
+document.getElementById("displayName").innerText="Hello "+name
+
+}
+
+let savedName=localStorage.getItem("username")
+
+if(savedName && document.getElementById("displayName")){
+
+document.getElementById("displayName").innerText="Hello "+savedName
+
+}
