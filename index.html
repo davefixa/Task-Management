@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Student Dashboard</title>
+<title>Task Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="sidebar">
+<nav>
 <h2>StudentOS</h2>
+<ul>
+<li><a href="index.html">Dashboard</a></li>
+<li><a href="tasks.html">Tasks</a></li>
+<li><a href="analytics.html">Analytics</a></li>
+<li><a href="calendar.html">Calendar</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
 
-<a href="index.html">Dashboard</a>
-<a href="tasks.html">Tasks</a>
-<a href="analytics.html">Analytics</a>
-<a href="calendar.html">Calendar</a>
-<a href="about.html">About</a>
-<a href="settings.html">Settings</a>
-</div>
-
-<div class="main">
+<div class="container">
 
 <h1>Dashboard</h1>
 
@@ -26,17 +26,17 @@
 
 <div class="card">
 <h3>Total Tasks</h3>
-<p id="totalTasks">0</p>
+<p id="total">0</p>
 </div>
 
 <div class="card">
 <h3>Completed</h3>
-<p id="completedTasks">0</p>
+<p id="completed">0</p>
 </div>
 
 <div class="card">
 <h3>Pending</h3>
-<p id="pendingTasks">0</p>
+<p id="pending">0</p>
 </div>
 
 </div>
