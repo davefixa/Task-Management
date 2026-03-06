@@ -7,51 +7,26 @@
 
 <body>
 
-<div class="sidebar">
-<h2>StudentOS</h2>
+<nav>
+<h2>Task Dashboard</h2>
+<ul>
+<li><a href="index.html">Dashboard</a></li>
+<li><a href="tasks.html">Tasks</a></li>
+<li><a href="analytics.html">Analytics</a></li>
+<li><a href="calendar.html">Calendar</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</nav>
 
-<a href="index.html">Dashboard</a>
-<a href="tasks.html">Tasks</a>
-<a href="analytics.html">Analytics</a>
-<a href="calendar.html">Calendar</a>
-<a href="about.html">About</a>
-<a href="settings.html">Settings</a>
-</div>
-
-<div class="main">
+<div class="container">
 
 <h1>Task Manager</h1>
 
-<input id="searchTask" placeholder="Search task..." onkeyup="searchTask()">
-
-<div class="task-input">
-
-<input id="taskInput" placeholder="Enter task">
-
-<select id="category">
-<option>Study</option>
-<option>Assignment</option>
-<option>Exam</option>
-<option>Personal</option>
-</select>
-
-<select id="priority">
-<option>Low</option>
-<option>Medium</option>
-<option>High</option>
-</select>
-
-<input type="date" id="deadline">
+<input id="taskInput" placeholder="Add new task">
 
 <button onclick="addTask()">Add Task</button>
 
-</div>
-
-<div class="filters">
-<button onclick="filterTasks('all')">All</button>
-<button onclick="filterTasks('completed')">Completed</button>
-<button onclick="filterTasks('pending')">Pending</button>
-</div>
+<input id="searchInput" placeholder="Search tasks" onkeyup="searchTask()">
 
 <ul id="taskList"></ul>
 
