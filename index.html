@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>TaskFlow Dashboard</title>
+<title>Student Dashboard</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="layout">
-
 <div class="sidebar">
-
-<h2>⚡ TaskFlow</h2>
+<h2>StudentOS</h2>
 
 <a href="index.html">Dashboard</a>
 <a href="tasks.html">Tasks</a>
-<a href="completed.html">Completed</a>
 <a href="analytics.html">Analytics</a>
+<a href="calendar.html">Calendar</a>
+<a href="about.html">About</a>
 <a href="settings.html">Settings</a>
-
 </div>
 
 <div class="main">
@@ -28,15 +25,18 @@
 <div class="cards">
 
 <div class="card">
-<h3 id="totalTasks">0</h3>
-<p>Total Tasks</p>
+<h3>Total Tasks</h3>
+<p id="totalTasks">0</p>
 </div>
 
 <div class="card">
-<h3 id="completedTasks">0</h3>
-<p>Completed Tasks</p>
+<h3>Completed</h3>
+<p id="completedTasks">0</p>
 </div>
 
+<div class="card">
+<h3>Pending</h3>
+<p id="pendingTasks">0</p>
 </div>
 
 </div>
