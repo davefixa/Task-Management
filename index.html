@@ -1,49 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Task Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Task App</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
-<h2>StudentOS</h2>
-<ul>
-<li><a href="index.html">Dashboard</a></li>
-<li><a href="tasks.html">Tasks</a></li>
-<li><a href="analytics.html">Analytics</a></li>
-<li><a href="calendar.html">Calendar</a></li>
-<li><a href="about.html">About</a></li>
-</ul>
+<nav class="topnav">
+<h1>TaskFlow</h1>
+<input id="searchTask" placeholder="Search tasks..." onkeyup="searchTask()">
 </nav>
 
 <div class="container">
 
-<h1>Dashboard</h1>
-
-<div class="cards">
-
-<div class="card">
-<h3>Total Tasks</h3>
-<p id="total">0</p>
+<div class="add-task">
+<input type="text" id="taskInput" placeholder="What needs to be done?">
+<select id="priority">
+<option value="none">Priority</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>
+</select>
+<input type="date" id="deadline">
+<button onclick="addTask()">Add</button>
 </div>
 
-<div class="card">
-<h3>Completed</h3>
-<p id="completed">0</p>
-</div>
-
-<div class="card">
-<h3>Pending</h3>
-<p id="pending">0</p>
-</div>
-
-</div>
+<ul id="taskList"></ul>
 
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
