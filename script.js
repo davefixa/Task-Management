@@ -5,124 +5,72 @@ localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 function addTask(){
-
 let input = document.getElementById("taskInput");
+let priority = document.getElementById("priority").value;
+let deadline = document.getElementById("deadline").value;
 
-if(!input) return;
-
-let text = input.value;
-
-if(text === "") return;
+if(input.value.trim() === "") return;
 
 tasks.push({
-text:text,
-done:false
+text:input.value.trim(),
+priority:priority,
+deadline:deadline,
+completed:false
 });
 
-input.value="";
+input.value = "";
+document.getElementById("priority").value = "none";
+document.getElementById("deadline").value = "";
 
 saveTasks();
-
-displayTasks();
-
+renderTasks();
 }
 
-function displayTasks(){
-
+function renderTasks(){
 let list = document.getElementById("taskList");
+list.innerHTML = "";
 
-if(!list) return;
-
-list.innerHTML="";
-
-tasks.forEach((task,index)=>{
-
+tasks.forEach((task, index) => {
 let li = document.createElement("li");
+li.className = task.completed ? "completed" : "";
 
-li.innerHTML =
-task.text +
-` <button onclick="completeTask(${index})">✔</button>
-<button onclick="deleteTask(${index})">✖</button>`;
+let content = `
+<div class="text">
+<b>${task.text}</b>
+${task.priority !== "none" ? `<span class="priority-${task.priority}">(${task.priority})</span>` : ""}
+${task.deadline ? ` • 📅 ${task.deadline}` : ""}
+</div>
+`;
 
-if(task.done){
-li.style.textDecoration="line-through";
-}
-
+li.innerHTML = content + `
+<div>
+<button class="small" onclick="toggleComplete(${index})">✔</button>
+<button class="small" onclick="deleteTask(${index})">✖</button>
+</div>
+`;
 list.appendChild(li);
-
 });
-
-updateStats();
-
 }
 
-function completeTask(i){
-
-tasks[i].done = !tasks[i].done;
-
+function toggleComplete(i){
+tasks[i].completed = !tasks[i].completed;
 saveTasks();
-
-displayTasks();
-
+renderTasks();
 }
 
 function deleteTask(i){
-
 tasks.splice(i,1);
-
 saveTasks();
-
-displayTasks();
-
+renderTasks();
 }
 
 function searchTask(){
+let val = document.getElementById("searchTask").value.toLowerCase();
+let items = document.querySelectorAll("#taskList li");
 
-let search = document.getElementById("searchInput").value.toLowerCase();
-
-let list = document.getElementById("taskList");
-
-let items = list.getElementsByTagName("li");
-
-for(let i=0;i<items.length;i++){
-
-let txt = items[i].innerText.toLowerCase();
-
-items[i].style.display = txt.includes(search) ? "" : "none";
-
+items.forEach(item => {
+item.style.display = item.textContent.toLowerCase().includes(val) ? "" : "none";
+});
 }
 
-}
-
-function updateStats(){
-
-let total = tasks.length;
-
-let completed = tasks.filter(t=>t.done).length;
-
-let pending = total - completed;
-
-let totalEl = document.getElementById("total");
-let completedEl = document.getElementById("completed");
-let pendingEl = document.getElementById("pending");
-
-if(totalEl) totalEl.innerText = total;
-if(completedEl) completedEl.innerText = completed;
-if(pendingEl) pendingEl.innerText = pending;
-
-let progress = document.getElementById("progress");
-let text = document.getElementById("progressText");
-
-if(progress){
-
-let percent = total === 0 ? 0 : (completed/total)*100;
-
-progress.style.width = percent + "%";
-
-text.innerText = Math.round(percent) + "%";
-
-}
-
-}
-
-displayTasks();
+renderTasks();
