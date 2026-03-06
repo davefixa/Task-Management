@@ -1,91 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Productivity Dashboard</title>
-
+<title>TaskFlow Dashboard</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<header>
+<div class="layout">
 
-<h1>📚 Student Productivity Dashboard</h1>
-<p>Organize your study tasks efficiently</p>
+<div class="sidebar">
 
-<button class="mode-toggle" onclick="toggleMode()">🌙 Toggle Mode</button>
+<h2>⚡ TaskFlow</h2>
 
-</header>
-
-
-<div class="container">
-
-<div class="task-input">
-
-<input id="taskInput" type="text" placeholder="Enter new task...">
-
-<select id="category">
-<option value="Study">Study</option>
-<option value="Assignment">Assignment</option>
-<option value="Exam">Exam</option>
-<option value="Personal">Personal</option>
-</select>
-
-<select id="priority">
-<option value="Low">Low Priority</option>
-<option value="Medium">Medium Priority</option>
-<option value="High">High Priority</option>
-</select>
-
-<input type="date" id="deadline">
-
-<button onclick="addTask()">Add Task</button>
+<a href="index.html">Dashboard</a>
+<a href="tasks.html">Tasks</a>
+<a href="completed.html">Completed</a>
+<a href="analytics.html">Analytics</a>
+<a href="settings.html">Settings</a>
 
 </div>
 
+<div class="main">
 
-<input id="searchTask" type="text" placeholder="🔍 Search tasks..." onkeyup="renderTasks()">
+<h1>Dashboard</h1>
 
+<div class="cards">
 
-<div class="stats">
-
-<div class="stat">
+<div class="card">
 <h3 id="totalTasks">0</h3>
 <p>Total Tasks</p>
 </div>
 
-<div class="stat">
+<div class="card">
 <h3 id="completedTasks">0</h3>
-<p>Completed</p>
+<p>Completed Tasks</p>
 </div>
 
 </div>
 
-
-<div class="progress-bar">
-<div id="progress"></div>
 </div>
 
-
-<h2>Pending Tasks</h2>
-<ul id="taskList"></ul>
-
-
-<h2>Completed Tasks</h2>
-<ul id="completedList"></ul>
-
-
 </div>
-
-
-<footer>
-<p>Student Task Dashboard • Web Development Project</p>
-</footer>
-
 
 <script src="script.js"></script>
 
