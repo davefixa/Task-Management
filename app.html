@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskFlow App</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<nav class="topnav">
+<h2>TaskFlow</h2>
+
+<input id="searchTask"
+placeholder="Search tasks..."
+onkeyup="searchTask()">
+
+</nav>
+
+<!-- MAIN CONTAINER -->
+
+<div class="container">
+
+<!-- PRODUCTIVITY BANNER -->
+
+<div class="banner">
+<h2>Stay Organized. Work Smarter.</h2>
+<p>Every completed task is a step closer to your success.</p>
+</div>
+
+<!-- STATS SECTION -->
+
+<div class="stats-grid">
+
+<div class="card">
+<h3 id="totalTasks">0</h3>
+<p>Total Tasks</p>
+</div>
+
+<div class="card">
+<h3 id="completedTasks">0</h3>
+<p>Completed</p>
+</div>
+
+<div class="card">
+<h3 id="pendingTasks">0</h3>
+<p>Pending</p>
+</div>
+
+</div>
+
+<!-- TASK INPUT PANEL -->
+
+<div class="add-task">
+
+<input id="taskInput" placeholder="What needs to be done?">
+
+<select id="priority">
+<option value="none">Priority</option>
+<option value="high">High</option>
+<option value="medium">Medium</option>
+<option value="low">Low</option>
+</select>
+
+<input type="date" id="deadline">
+
+<button onclick="addTask()">Add Task</button>
+
+</div>
+
+<!-- FILTERS -->
+
+<div class="filters">
+<button onclick="filterTasks('all')">All</button>
+<button onclick="filterTasks('completed')">Completed</button>
+<button onclick="filterTasks('pending')">Pending</button>
+</div>
+
+<!-- TASK LIST -->
+
+<ul id="taskList"></ul>
+
+</div>
+
+<footer class="footer">
+<p>TaskFlow Productivity Dashboard • University Project</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+  </html>
