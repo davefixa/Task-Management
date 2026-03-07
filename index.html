@@ -1,27 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TaskFlow</title>
+
+<title>EasyTask</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 
-<body class="startup-body">
+<body>
 
-<div class="startup-container">
+<!-- LANDING PAGE -->
 
-<h1 class="startup-title">TaskFlow</h1>
+<section class="landing" id="landing">
 
-<p class="startup-text">
-Stay organized. Manage your tasks. Improve productivity.
-</p>
+<h1>EasyTask</h1>
 
-<button class="startup-button" onclick="location.href='app.html'">
-Start Productivity
-</button>
+<p>Smart Task Management For Students</p>
+
+<button onclick="openApp()">Start Organizing</button>
+
+</section>
+
+
+
+<!-- DASHBOARD -->
+
+<section class="app" id="app">
+
+<header>
+
+<h2>EasyTask Dashboard</h2>
+
+</header>
+
+
+<div class="stats">
+
+<div class="card">
+<h3 id="totalTasks">0</h3>
+<p>Total Tasks</p>
+</div>
+
+<div class="card">
+<h3 id="completedTasks">0</h3>
+<p>Completed</p>
+</div>
+
+<div class="card">
+<h3 id="pendingTasks">0</h3>
+<p>Pending</p>
+</div>
 
 </div>
 
+
+
+<div class="task-form">
+
+<input id="taskInput" placeholder="Enter a task">
+
+<input type="date" id="dueDate">
+
+<select id="category">
+
+<option>School</option>
+<option>Work</option>
+<option>Personal</option>
+
+</select>
+
+<button onclick="addTask()">Add</button>
+
+</div>
+
+
+
+<ul id="taskList"></ul>
+
+</section>
+
+<script src="app.js"></script>
+
 </body>
-</html>
+
+  </html>
